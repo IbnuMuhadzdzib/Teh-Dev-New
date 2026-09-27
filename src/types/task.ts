@@ -25,6 +25,8 @@ export interface CreateTaskPayload {
 
 export interface UpdateTaskPayload {
   id: string;
+  title?: string;
+  description?: string | null;
   status?: TaskStatus;
   progress_percent?: number;
 }

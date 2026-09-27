@@ -1,6 +1,26 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
-import { createDocument, getDocuments } from '@/services/document';
-import type { CreateDocumentPayload } from '@/types/document';
+import { createCategory, createDocument, deleteCategory, deleteDocument, getCategories, getDocuments } from '@/services/document';
+import type { CreateCategoryPayload, CreateDocumentPayload } from '@/types/document';
+
+export function useCategoriesQuery() {
+  return useQuery({ queryKey: ['document_categories'], queryFn: getCategories });
+}
+
+export function useCreateCategoryMutation(createdBy: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: CreateCategoryPayload) => createCategory(payload, createdBy),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['document_categories'] }),
+  });
+}
+
+export function useDeleteCategoryMutation() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => deleteCategory(id),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['document_categories'] }),
+  });
+}
 
 export function useDocumentsQuery() {
   return useQuery({ queryKey: ['documents'], queryFn: getDocuments });
@@ -10,6 +30,14 @@ export function useCreateDocumentMutation(createdBy: string) {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (payload: CreateDocumentPayload) => createDocument(payload, createdBy),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['documents'] }),
+  });
+}
+
+export function useDeleteDocumentMutation() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => deleteDocument(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['documents'] }),
   });
 }

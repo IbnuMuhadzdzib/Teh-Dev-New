@@ -1,16 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { useUpdateUserRoleMutation, useUsersQuery } from '@/queries/user';
-import type { UserRole } from '@/types/auth';
+import { ref } from "vue";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { useUpdateUserRoleMutation, useUsersQuery } from "@/queries/user";
+import type { UserRole } from "@/types/auth";
 
 const enabled = ref(true);
 const { data: users, isLoading } = useUsersQuery(enabled);
 const { mutate } = useUpdateUserRoleMutation();
 
-const roleOptions: UserRole[] = ['worker', 'pm', 'pl', 'founder'];
+const roleOptions: UserRole[] = [
+  "developer",
+  "designer",
+  "pm",
+  "pl",
+  "founder",
+];
 </script>
 
 <template>
@@ -22,7 +41,10 @@ const roleOptions: UserRole[] = ['worker', 'pm', 'pl', 'founder'];
 
     <Skeleton v-if="isLoading" class="h-64 rounded-xl" />
 
-    <div v-else class="animate-in fade-in overflow-hidden rounded-xl border duration-300">
+    <div
+      v-else
+      class="animate-in fade-in overflow-hidden rounded-xl border duration-300"
+    >
       <Table>
         <TableHeader>
           <TableRow>
@@ -36,11 +58,15 @@ const roleOptions: UserRole[] = ['worker', 'pm', 'pl', 'founder'];
             <TableCell>
               <Select
                 :model-value="u.role"
-                @update:model-value="(v) => mutate({ userId: u.id, role: v as UserRole })"
+                @update:model-value="
+                  (v) => mutate({ userId: u.id, role: v as UserRole })
+                "
               >
                 <SelectTrigger class="w-40"><SelectValue /></SelectTrigger>
                 <SelectContent>
-                  <SelectItem v-for="r in roleOptions" :key="r" :value="r">{{ r }}</SelectItem>
+                  <SelectItem v-for="r in roleOptions" :key="r" :value="r">{{
+                    r
+                  }}</SelectItem>
                 </SelectContent>
               </Select>
             </TableCell>

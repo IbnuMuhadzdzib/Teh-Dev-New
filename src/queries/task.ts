@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query';
 import { computed, type Ref } from 'vue';
-import { createTask, getAllTasks, getMyTasks, updateTask } from '@/services/task';
+import { createTask, deleteTask, getAllTasks, getMyTasks, updateTask } from '@/services/task';
 import type { CreateTaskPayload, UpdateTaskPayload } from '@/types/task';
 
 export function useMyTasksQuery(userId: Ref<string>) {
@@ -27,6 +27,14 @@ export function useUpdateTaskMutation() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: (payload: UpdateTaskPayload) => updateTask(payload),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tasks'] }),
+  });
+}
+
+export function useDeleteTaskMutation() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => deleteTask(id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['tasks'] }),
   });
 }
