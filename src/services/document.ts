@@ -1,10 +1,11 @@
 import { supabase } from '@/lib/supabase';
-import type { CreateCategoryPayload, CreateDocumentPayload, Document, DocumentCategory } from '@/types/document';
+import type { CreateCategoryPayload, CreateDocumentPayload, Document, DocumentCategory, UpdateCategoryPayload, UpdateDocumentPayload } from '@/types/document';
 
 export async function getCategories(): Promise<DocumentCategory[]> {
   const { data, error } = await supabase
     .from('document_categories')
     .select('*')
+    .order('sort_order', { ascending: true })
     .order('created_at', { ascending: false });
 
   if (error) throw error;
@@ -18,6 +19,19 @@ export async function createCategory(
   const { data, error } = await supabase
     .from('document_categories')
     .insert({ ...payload, created_by: createdBy })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function updateCategory(payload: UpdateCategoryPayload): Promise<DocumentCategory> {
+  const { id, ...updates } = payload;
+  const { data, error } = await supabase
+    .from('document_categories')
+    .update(updates)
+    .eq('id', id)
     .select()
     .single();
 
@@ -47,6 +61,19 @@ export async function createDocument(
   const { data, error } = await supabase
     .from('documents')
     .insert({ ...payload, created_by: createdBy })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data as unknown as Document;
+}
+
+export async function updateDocument(payload: UpdateDocumentPayload): Promise<Document> {
+  const { id, ...updates } = payload;
+  const { data, error } = await supabase
+    .from('documents')
+    .update(updates)
+    .eq('id', id)
     .select()
     .single();
 
