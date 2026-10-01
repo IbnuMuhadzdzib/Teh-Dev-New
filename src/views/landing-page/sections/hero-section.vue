@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <section id="home" class="flex min-h-[100vh] items-center px-24 py-16">
+  <section id="home" class="flex min-h-screen items-center px-24 py-16">
     <div class="max-w-md">
       <h1 class="font-sf text-4xl font-bold leading-tight text-gray-800">
         Website Bisnis<br />

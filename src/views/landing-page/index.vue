@@ -2,6 +2,7 @@
     import Navbar from '@/components/landing-page/navbar/Navbar.vue';
 
     import HeroSection from './sections/hero-section.vue';
+    import FeaturesSection from './sections/features-section.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@
 
         <div class="content-wrapper"> 
             <HeroSection />
+            <FeaturesSection />
         </div>
     </main>
 </template>
