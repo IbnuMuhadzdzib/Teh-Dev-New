@@ -12,7 +12,7 @@ const navLinks = [
 </script>
 
 <template>
-  <nav class="flex items-center justify-between px-24 py-8">
+  <nav class="flex items-center justify-between px-24 py-8 bg-transparent fixed w-full top-0 z-50">
     <NavbarLogo />
 
     <div class="flex items-center gap-12">
