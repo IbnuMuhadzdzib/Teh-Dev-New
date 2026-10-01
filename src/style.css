@@ -3,6 +3,27 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -42,6 +63,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sf: 'SF Pro Display', sans-serif;
 }
 
 :root {

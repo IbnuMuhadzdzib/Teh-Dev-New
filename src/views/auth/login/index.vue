@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import logo from '@/assets/tehdev.png';
+import logo from '@/assets/images/tehdev.png';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';

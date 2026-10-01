@@ -2,10 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 import authRoutes from './modules/auth';
 import dashboardRoutes from './modules/dashboard';
+import landingPageRoutes from './modules/landing-page';
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: '/', redirect: { name: 'login' } }, ...authRoutes, ...dashboardRoutes],
+  routes: [{ path: '/', redirect: { name: 'landing-page' } }, ...authRoutes, ...dashboardRoutes, ...landingPageRoutes  ],
 });
 
 router.beforeEach(async (to) => {

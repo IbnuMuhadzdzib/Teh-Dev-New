@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { FileText, LayoutGrid, ListTodo, Users } from '@lucide/vue';
-import logo from '@/assets/tehdev.png';
+import logo from '@/assets/images/tehdev.png';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useGlobalHelpers } from '@/composable/useGlobalHelpers';
@@ -32,10 +32,10 @@ async function handleLogout() {
   <div class="min-h-svh bg-[#F8F9FB] flex flex-col items-center">
     <!-- Top Nav Header -->
     <header class="w-full bg-white/70 backdrop-blur-xl border-b border-border/40 sticky top-0 z-50">
-      <div class="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-4">
+      <div class="mx-auto flex w-full max-w-350 items-center justify-between px-6 py-4">
         
         <!-- Logo -->
-        <div class="flex items-center gap-3 min-w-[200px]">
+        <div class="flex items-center gap-3 min-w-50">
           <div class="p-1.5 bg-indigo-50 rounded-xl">
             <img :src="logo" alt="Logo" class="h-8 w-8 object-contain" />
           </div>
@@ -64,7 +64,7 @@ async function handleLogout() {
         </nav>
 
         <!-- Right Side User Icons -->
-        <div class="flex items-center gap-3 min-w-[200px] justify-end">
+        <div class="flex items-center gap-3 min-w-50 justify-end">
           <div class="flex items-center gap-2 pl-4">
             <!-- Avatar & Logout Dropdown (Simplified for now) -->
             <div class="hidden lg:block text-right">
@@ -103,7 +103,7 @@ async function handleLogout() {
     </header>
 
     <!-- Main Content Area -->
-    <main class="w-full max-w-[1400px] px-4 py-8 lg:px-8 pb-32">
+    <main class="w-full max-w-350 px-4 py-8 lg:px-8 pb-32">
       <router-view v-slot="{ Component }">
         <Transition name="fade-slide" mode="out-in">
           <component :is="Component" />

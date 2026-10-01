@@ -6,4 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: { alias: { '@': path.resolve(import.meta.dirname, './src') } },
+  server: {
+    port: 17510,
+    open: '/landing-page',
+  }
 });
