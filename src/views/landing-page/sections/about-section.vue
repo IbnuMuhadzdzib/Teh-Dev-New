@@ -2,14 +2,12 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 
-// 1. Import icon yang dibutuhkan dari lucide-vue-next
 import { Store, Monitor, Zap, Tag, Wrench, Smartphone } from "@lucide/vue";
 
 import Feature from "@/components/landing-page/feature/Feature.vue";
 import FeatureIcon from "@/components/landing-page/feature/FeatureIcon.vue";
 import FeatureLabel from "@/components/landing-page/feature/FeatureLabel.vue";
 
-// 2. Masukkan komponen icon langsung sebagai value di dalam array
 const features = [
   {
     id: 1,
@@ -49,6 +47,49 @@ const features = [
   },
 ];
 
+import { Teams, TeamImage, TeamName, TeamRole, TeamProfile } from "@/components/landing-page/teams";
+import Ibnu from "@/assets/images/teams/teams-ibnu.png"
+import Gaza from "@/assets/images/teams/teams-fathya.png"
+import Fatir from "@/assets/images/teams/teams-fatir.png"
+
+const teams = [
+  {
+    id: 1,
+    name: 'Ibnu Alif',
+    role: 'Fullstack Engineer',
+    image: Ibnu,
+    linkedin: 'https://www.linkedin.com/in/ibnu-alif-muhadzdzib'
+  },
+  {
+    id: 2,
+    name: 'Gaza Fathya',
+    role: 'Fullstack Developer',
+    image: Gaza,
+    linkedin: 'https://www.linkedin.com/in/gfakhdan'
+  },
+  {
+    id: 3,
+    name: 'Muhammad Zahir',
+    role: 'Fullstack Developer',
+    image: Ibnu,
+    linkedin: 'https://www.linkedin.com/in/muhammad-zahir-as-sajjad-a90443380/'
+  },
+  {
+    id: 4,
+    name: 'Abidal Farzan',
+    role: 'Fullstack Developer',
+    image: Ibnu,
+    linkedin: 'https://www.linkedin.com/in/abidalfarzanr/'
+  },
+  {
+    id: 5,
+    name: 'Ahmad Fatir',
+    role: 'Designer',
+    image: Fatir,
+    linkedin: 'https://www.linkedin.com/in/ahmadfatirroziq/'
+  }
+]
+
 const trackRef = ref<HTMLElement | null>(null);
 let marqueeTween: gsap.core.Tween | null = null;
 
@@ -83,7 +124,7 @@ const handleMouseLeave = () => {
 <template>
   <section
     id="about"
-    class="flex min-h-screen flex-col items-center gap-12 py-8"
+    class="flex min-h-[80vh] flex-col items-center gap-12 py-8"
   >
     <div class="max-w-lg text-center">
       <h1 class="font-sf text-4xl font-bold leading-tight text-gray-800">
@@ -120,6 +161,33 @@ const handleMouseLeave = () => {
           </Feature>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="flex flex-col px-12 py-12">
+        <div class="w-full text-center">
+      <h1 class="font-sf text-4xl font-bold leading-tight text-gray-800">
+        Tim Kami
+      </h1>
+
+      <p class="font-sf mt-4 text-gray-500">
+        Dari desain hingga pengembangan, kami bantu wujudkan website yang sesuai <br> kebutuhan bisnis Anda.
+      </p>
+    </div>
+
+    <div class="flex gap-4 py-12">
+      <Teams v-for="member in teams" :key="member.id">
+        <TeamImage :src="member.image" :alt="member.name" />
+
+        <div class="mt-3 flex items-end justify-between px-1">
+          <div class="flex flex-col">
+            <TeamName>{{ member.name }}</TeamName>
+            <TeamRole>{{ member.role }}</TeamRole>
+          </div>
+
+          <TeamProfile :href="member.linkedin" />
+        </div>
+      </Teams>
     </div>
   </section>
 </template>
