@@ -11,6 +11,11 @@ const landingPageRoutes = [
     name: 'service-detail',
     component: () => import('@/views/landing-page/partials/service-section-detail.vue'), 
   },
+  {
+    path: '/project/:slug',
+    name: 'project-detail',
+    component: () => import('@/views/landing-page/partials/project-section-detail.vue'), 
+  },
 ];
 
 export default landingPageRoutes;
