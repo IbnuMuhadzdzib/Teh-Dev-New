@@ -7,7 +7,7 @@ const services = [
     id: 1,
     slug: 'pengembangan-website',
     title: 'Pengembangan Website',
-    description: 'Bantu bisnis Anda tumbuh melalui website yang cepat, aman, dan mudah digunakan.',
+    description: 'when your heart is broken baby, darkness on the edge of town when your heart is broken baby, darkness on the edge of town',
     icon: Store,
     bgColor: 'bg-red-100 text-red-500'
   },
