@@ -3,6 +3,7 @@
 
     import HeroSection from './sections/hero-section.vue';
     import AboutSection from './sections/about-section.vue';
+    import ServiceSection from './sections/service-section.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
         <div class="content-wrapper"> 
             <HeroSection />
             <AboutSection />
+            <ServiceSection />
         </div>
     </main>
 </template>

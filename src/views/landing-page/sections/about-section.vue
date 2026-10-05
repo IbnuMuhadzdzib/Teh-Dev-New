@@ -51,34 +51,36 @@ import { Teams, TeamImage, TeamName, TeamRole, TeamProfile } from "@/components/
 import Ibnu from "@/assets/images/teams/teams-ibnu.png"
 import Gaza from "@/assets/images/teams/teams-fathya.png"
 import Fatir from "@/assets/images/teams/teams-fatir.png"
+import Farzan from "@/assets/images/teams/teams-farzan.png"
+import Zahir from "@/assets/images/teams/teams-zahir.png"
 
 const teams = [
   {
     id: 1,
-    name: 'Ibnu Alif',
-    role: 'Fullstack Engineer',
-    image: Ibnu,
-    linkedin: 'https://www.linkedin.com/in/ibnu-alif-muhadzdzib'
-  },
-  {
-    id: 2,
     name: 'Gaza Fathya',
     role: 'Fullstack Developer',
     image: Gaza,
     linkedin: 'https://www.linkedin.com/in/gfakhdan'
   },
   {
-    id: 3,
+    id: 2,
     name: 'Muhammad Zahir',
     role: 'Fullstack Developer',
-    image: Ibnu,
+    image: Zahir,
     linkedin: 'https://www.linkedin.com/in/muhammad-zahir-as-sajjad-a90443380/'
+  },
+  {
+    id: 3,
+    name: 'Ibnu Alif',
+    role: 'Fullstack Engineer',
+    image: Ibnu,
+    linkedin: 'https://www.linkedin.com/in/ibnu-alif-muhadzdzib'
   },
   {
     id: 4,
     name: 'Abidal Farzan',
     role: 'Fullstack Developer',
-    image: Ibnu,
+    image: Farzan,
     linkedin: 'https://www.linkedin.com/in/abidalfarzanr/'
   },
   {
