@@ -22,7 +22,7 @@
 </script>
 
 <template>
-  <section>
+  <section id="superiority">
     <div>
       <h2 class="text-3xl font-bold text-center mb-20 text-gray-800">
         Project Kami

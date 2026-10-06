@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <button class="bg-[#33B261] text-white px-8 py-2 rounded-md hover:bg-[#2A8C4B] transition-colors">
+    <a href="#contact" class="bg-[#33B261] text-white px-8 py-2.5 rounded-full hover:bg-[#2A8C4B] transition-all">
         {{ label }}
-    </button>
+    </a>
 </template>

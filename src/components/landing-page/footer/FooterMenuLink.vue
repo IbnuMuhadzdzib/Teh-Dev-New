@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <a :href="href" class="text-gray-700 font-sf text-base hover:text-green-600 transition-colors">
+  <a :href="href" class="font-sf text-lg text-[#1f1f1f] hover:text-[#33B261] transition-colors">
     {{ label }}
   </a>
 </template>

@@ -39,7 +39,7 @@ const services = [
 </script>
 
 <template>
-  <section class="py-16 mt-48 mb-48 px-6 max-w-6xl mx-auto">
+  <section id="services" class="py-16 mt-48 mb-48 px-6 max-w-6xl mx-auto">
     <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
       Layanan Digital Kami Untuk Bisnis Anda
     </h2>
