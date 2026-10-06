@@ -7,6 +7,8 @@
     import ProjectsSection from './sections/projects-section.vue';
     import FeedbacksSection from './sections/feedbacks-section.vue'
     import FaqSection from './sections/faq-section.vue';
+    import CTA from '@/components/landing-page/cta/CallToAction.vue'
+    import FooterSection from './sections/footer-section.vue';
 </script>
 
 <template>
@@ -20,6 +22,8 @@
             <ProjectsSection />
             <FeedbacksSection />
             <FaqSection />
+            <CTA />
+            <FooterSection />
         </div>
     </main>
 </template>
