@@ -6,6 +6,7 @@
     import ServicesSection from './sections/services-section.vue';
     import ProjectsSection from './sections/projects-section.vue';
     import FeedbacksSection from './sections/feedbacks-section.vue'
+    import FaqSection from './sections/faq-section.vue';
 </script>
 
 <template>
@@ -18,6 +19,7 @@
             <ServicesSection />
             <ProjectsSection />
             <FeedbacksSection />
+            <FaqSection />
         </div>
     </main>
 </template>
