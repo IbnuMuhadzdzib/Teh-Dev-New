@@ -21,22 +21,32 @@ export const useAuthStore = defineStore('auth', {
 
   actions: {
     async init() {
-      const { data } = await supabase.auth.getSession();
-      if (data.session) await this.loadProfile(data.session.user.id);
+      try {
+        const { data, error } = await supabase.auth.getSession();
+        if (!error && data?.session) {
+          await this.loadProfile(data.session.user.id);
+        }
 
-      supabase.auth.onAuthStateChange((_event, session) => {
-        if (session) this.loadProfile(session.user.id);
-        else this.reset();
-      });
-
-      this.ready = true;
+        supabase.auth.onAuthStateChange((_event, session) => {
+          if (session) this.loadProfile(session.user.id);
+          else this.reset();
+        });
+      } catch (err) {
+        console.error('Auth initialization error:', err);
+      } finally {
+        this.ready = true;
+      }
     },
 
     async loadProfile(userId: string) {
-      const profile = await fetchProfile(userId);
-      this.userId = userId;
-      this.username = profile?.username ?? '';
-      this.role = profile?.role ?? '';
+      try {
+        const profile = await fetchProfile(userId);
+        this.userId = userId;
+        this.username = profile?.username ?? '';
+        this.role = profile?.role ?? '';
+      } catch (err) {
+        console.error('Failed to load profile:', err);
+      }
     },
 
     reset() {

@@ -6,7 +6,14 @@ import landingPageRoutes from './modules/landing-page';
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: '/', redirect: { name: 'landing-page' } }, ...authRoutes, ...dashboardRoutes, ...landingPageRoutes  ],
+  routes: [
+    { path: '/', redirect: { name: 'landing-page' } },
+    { path: '/landing_page', redirect: { name: 'landing-page' } },
+    ...landingPageRoutes,
+    ...authRoutes,
+    ...dashboardRoutes,
+    { path: '/:pathMatch(.*)*', redirect: { name: 'landing-page' } },
+  ],
 });
 
 router.beforeEach(async (to) => {

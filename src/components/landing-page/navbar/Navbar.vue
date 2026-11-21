@@ -64,7 +64,6 @@ onMounted(() => {
       backgroundColor: "rgba(255,255,255,0)",
       border: "1px solid rgba(229,231,235,0)",
       backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
     });
   }
 
