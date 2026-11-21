@@ -7,22 +7,24 @@ import landingPageRoutes from './modules/landing-page';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: { name: 'landing-page' } },
-    { path: '/landing_page', redirect: { name: 'landing-page' } },
+    { path: '/', redirect: '/landing-page' },
+    { path: '/landing_page', redirect: '/landing-page' },
     ...landingPageRoutes,
     ...authRoutes,
     ...dashboardRoutes,
-    { path: '/:pathMatch(.*)*', redirect: { name: 'landing-page' } },
+    { path: '/:pathMatch(.*)*', redirect: '/landing-page' },
   ],
 });
 
 router.beforeEach(async (to) => {
-  const auth = useAuthStore();
-  if (!auth.ready) await auth.init();
+  if (to.meta.requiresAuth || to.name === 'login' || to.meta.founderOnly) {
+    const auth = useAuthStore();
+    if (!auth.ready) await auth.init();
 
-  if (to.meta.requiresAuth && !auth.isLoggedIn) return { name: 'login' };
-  if (to.name === 'login' && auth.isLoggedIn) return { name: 'dashboard-projects' };
-  if (to.meta.founderOnly && !auth.isFounder) return { name: 'dashboard-projects' };
+    if (to.meta.requiresAuth && !auth.isLoggedIn) return { name: 'login' };
+    if (to.name === 'login' && auth.isLoggedIn) return { name: 'dashboard-projects' };
+    if (to.meta.founderOnly && !auth.isFounder) return { name: 'dashboard-projects' };
+  }
 
   return true;
 });
